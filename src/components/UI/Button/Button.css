@@ -1,0 +1,17 @@
+.btn {
+  display: block;
+  cursor: pointer;
+  padding: 0.35rem 1.5rem;
+  color: var(--clr-white);
+  border: 0;
+  border-radius: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.btn--violet {
+  background-color: var(--clr-violet);
+}
+
+.btn--violet:hover {
+  background-color: var(--clr-dark-violet);
+}
