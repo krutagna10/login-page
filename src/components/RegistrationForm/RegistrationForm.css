@@ -17,21 +17,6 @@
   border-bottom: 2px solid black;
 }
 
-.form__btn-forgot-password {
-  color: var(--clr-gray);
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 14px;
-  width: max-content;
-  margin-left: auto;
-}
-
-.form__btn-forgot-password:hover {
-  color: var(--clr-dark-violet);
-}
-
 .form__btn {
   margin-top: 2rem;
 }

@@ -1,5 +1,5 @@
 import Button from "../UI/Button/Button.jsx";
-import "./Form.css";
+import "./RegistrationForm.css";
 
 function RegistrationForm() {
   return (

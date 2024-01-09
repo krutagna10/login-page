@@ -1,0 +1,56 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.form__input {
+  display: block;
+  padding: 0.5rem;
+  border: 0;
+  border-bottom: 1px solid black;
+  width: 100%;
+}
+
+.form__input:focus {
+  outline: 0;
+  border-bottom: 2px solid black;
+}
+
+.form__input.error {
+  border-bottom: 1px solid red;
+}
+
+.form__input-wrapper {
+  position: relative;
+}
+
+.form__input-error-message {
+  font-size: 14px;
+  color: red;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.form__btn-forgot-password {
+  color: var(--clr-gray);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  width: max-content;
+  margin-left: auto;
+}
+
+.form__btn-forgot-password:hover {
+  color: var(--clr-dark-violet);
+}
+
+.form__btn {
+  margin-top: 2rem;
+}
+
