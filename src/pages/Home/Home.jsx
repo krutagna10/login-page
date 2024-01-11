@@ -7,6 +7,8 @@ function Home() {
   return (
     <Layout>
       <div className="container">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+        perferendis reprehenderit tempore.
         <div className="image-wrapper">
           <img src={loginImageTransparent} alt="" />
         </div>
