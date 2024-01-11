@@ -40,7 +40,7 @@ function RegistrationForm() {
     formdata.append("method", "create_contact");
     formdata.append(
       "rest_data",
-      '{"user_auth":{"lang_key":"eng","contact_detail": {"email":"mayur@gmail.com", "username_c":"mayur","first_name":"mayur","last_name":"Parmar","mobile":"999999999","password":"11221311","company_name":"Mayur & Comp","designation":"CEO"}}}\')',
+      '{"user_auth":{"lang_key":"eng","contact_detail": {"email":"kpatel.kp3101@gmail.com", "username_c":"krutagna31","first_name":"Krutagna","last_name":"Patel","mobile":"7016164976","password":"12345678","company_name":"Dreamers Technologies","designation":"Intern"}}}',
     );
 
     const requestOptions = {
