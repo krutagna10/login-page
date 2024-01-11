@@ -14,6 +14,7 @@ function Home() {
           <LoginForm />
         </div>
       </div>
+      edited
     </Layout>
   );
 }
