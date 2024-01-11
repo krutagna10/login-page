@@ -13,10 +13,6 @@ function Home() {
         <div className="form-wrapper">
           <LoginForm />
         </div>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci eius
-        quasi asperiores. Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Tempora aspernatur eos recusandae tempore doloremque, dolorum enim
-        soluta delectus nulla fugit.
       </div>
     </Layout>
   );
