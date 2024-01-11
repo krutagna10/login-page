@@ -1,4 +1,4 @@
-.app {
+.container{
   display: grid;
   grid-template-columns: 55fr 45fr;
   border-radius: 1rem;
