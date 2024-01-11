@@ -58,7 +58,7 @@ html {
 
 body {
   font-family: var(--font-barlow-condensed);
-  background: linear-gradient(to right,var(--clr-dark-violet), var(--clr-dark-blue));
+  background: linear-gradient(to right, var(--clr-dark-violet), var(--clr-dark-blue));
   position: relative;
   min-height: 100vh;
   line-height: 1.5;
@@ -99,6 +99,6 @@ body {
 }
 
 /* Utility Classes */
-.flow > * + * {
+.flow>*+* {
   margin-top: 1rem;
 }

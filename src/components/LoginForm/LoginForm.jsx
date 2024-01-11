@@ -1,6 +1,6 @@
 import Button from "../UI/Button/Button.jsx";
 import { useFormik } from "formik";
-import loginSchema from "../../utilities/loginSchema.jsx";
+import loginSchema from "../../utilities/schema/loginSchema.jsx";
 import "./LoginForm.css";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -28,7 +28,7 @@ function LoginForm() {
     formdata.append("method", "login_portal");
     formdata.append(
       "rest_data",
-      `{"user_auth":{"email":"${values.email}","password":${values.password},"encryption":"PLAIN"},"application":"mobile"}`,
+      `{"user_auth":{"email":"${values.email}","password":${values.password},"encryption":"PLAIN"},"application":"mobile"}`
     );
 
     const requestOptions = {
@@ -39,7 +39,7 @@ function LoginForm() {
 
     fetch(
       "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
-      requestOptions,
+      requestOptions
     )
       .then((response) => response.text())
       .then((result) => console.log(result))
