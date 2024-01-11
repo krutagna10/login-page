@@ -14,7 +14,9 @@ function Home() {
           <LoginForm />
         </div>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci eius
-        quasi asperiores.
+        quasi asperiores. Lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Tempora aspernatur eos recusandae tempore doloremque, dolorum enim
+        soluta delectus nulla fugit.
       </div>
     </Layout>
   );
