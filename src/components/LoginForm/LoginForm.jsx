@@ -2,8 +2,8 @@ import Button from "../UI/Button/Button.jsx";
 import { useFormik } from "formik";
 import loginSchema from "../../utilities/schema/loginSchema.jsx";
 import "./LoginForm.css";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const initialValues = {
   email: "",
@@ -11,24 +11,35 @@ const initialValues = {
 };
 
 function LoginForm() {
-  const { values, handleBlur, handleChange, handleSubmit, errors, resetForm } =
-    useFormik({
-      initialValues: initialValues,
-      validationSchema: loginSchema,
-      onSubmit: () => {
-        fetchData();
-        resetForm();
-      },
-    });
+  const {
+    values,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    errors,
+    touched,
+    resetForm,
+  } = useFormik({
+    initialValues: initialValues,
+    validationSchema: loginSchema,
+    onSubmit: () => {
+      fetchData();
+      console.log(error);
+    },
+  });
 
-  const fetchData = () => {
+  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+
+  const fetchData = async () => {
     const formdata = new FormData();
     formdata.append("input_type", "JSON");
     formdata.append("response_type", "JSON");
     formdata.append("method", "login_portal");
     formdata.append(
       "rest_data",
-      `{"user_auth":{"email":"${values.email}","password":${values.password},"encryption":"PLAIN"},"application":"mobile"}`
+      `{"user_auth":{"email":"${values.email}","password":${values.password},"encryption":"PLAIN"},"application":"mobile"}`,
     );
 
     const requestOptions = {
@@ -37,20 +48,31 @@ function LoginForm() {
       redirect: "follow",
     };
 
-    fetch(
-      "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+    try {
+      const response = await fetch(
+        "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
+        requestOptions,
+      );
+
+      const data = await response.json();
+      if ("contact_id" in data) {
+        navigate("/dashboard");
+        resetForm();
+      } else {
+        setError(data["error-msg"]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <form className="form" onSubmit={handleSubmit}>
       <div className="form__input-wrapper">
         <input
-          className={`form__input ${errors.email ? "error" : ""}`}
+          className={`form__input ${
+            errors.email && touched.email ? "error" : ""
+          }`}
           name="email"
           onChange={handleChange}
           onBlur={handleBlur}
@@ -58,13 +80,15 @@ function LoginForm() {
           type="text"
           placeholder="Email"
         />
-        {errors.email && (
+        {errors.email && touched.email && (
           <span className="form__input-error-message">{errors.email}</span>
         )}
       </div>
       <div className="form__input-wrapper">
         <input
-          className={`form__input ${errors.password ? "error" : ""}`}
+          className={`form__input ${
+            errors.password && touched.password ? "error" : ""
+          }`}
           name="password"
           onChange={handleChange}
           onBlur={handleBlur}
@@ -72,13 +96,14 @@ function LoginForm() {
           type="password"
           placeholder="Password"
         />
-        {errors.password && (
+        {errors.password && touched.password && (
           <span className="form__input-error-message">{errors.password}</span>
         )}
       </div>
       <button className="form__btn-forgot-password" type="button">
         Forgot Password?
       </button>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <Button className="form__btn btn--violet" type="submit">
         Login
       </Button>

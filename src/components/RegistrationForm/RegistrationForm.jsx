@@ -1,7 +1,8 @@
-import Button from "../UI/Button/Button.jsx";
 import registrationSchema from "../../utilities/schema/registrationSchema.jsx";
 import "./RegistrationForm.css";
 import { useFormik } from "formik";
+import Button from "../UI/Button/Button.jsx";
+import { useEffect } from "react";
 
 const initialValues = {
   userName: "",
@@ -32,63 +33,47 @@ function RegistrationForm() {
     },
   });
 
-  return (
-    <form className="form" onSubmit={handleSubmit}>
-      {/* <div className="form__input-wrapper">
-        <input
-          className={`form__input ${errors.username ? "error" : ""}`}
-          name="userName"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.username}
-          type="text"
-          placeholder="Username"
-        />
-        {errors.username && (
-          <span className="form__input-error-message">{errors.username}</span>
-        )}
-      </div>
-      <div className="form__input-wrapper">
-        <input
-          className={`form__input ${errors.email ? "error" : ""}`}
-          name="email"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.email}
-          type="email"
-          placeholder="Email"
-        />
-        {errors.password && (
-          <span className="form__input-error-message">{errors.email}</span>
-        )}
-      </div>
+  function storeData() {
+    const formdata = new FormData();
+    formdata.append("response_type", "JSON");
+    formdata.append("input_type", "JSON");
+    formdata.append("method", "create_contact");
+    formdata.append(
+      "rest_data",
+      '{"user_auth":{"lang_key":"eng","contact_detail": {"email":"mayur@gmail.com", "username_c":"mayur","first_name":"mayur","last_name":"Parmar","mobile":"999999999","password":"11221311","company_name":"Mayur & Comp","designation":"CEO"}}}\')',
+    );
 
-      <div className="form__input-wrapper">
-        <input
-          className={`form__input ${errors.password ? "error" : ""}`}
-          name="password"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.password}
-          type="password"
-          placeholder="Password"
-        />
-        {errors.password && (
-          <span className="form__input-error-message">{errors.password}</span>
-        )}
-      </div>
-      <Button className="form__btn btn--violet" type="submit">
-        Register
-      </Button> */}
+    const requestOptions = {
+      method: "POST",
+      body: formdata,
+      redirect: "follow",
+    };
+
+    fetch(
+      "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
+      requestOptions,
+    )
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  }
+
+  useEffect(() => {
+    storeData();
+  }, []);
+
+  return (
+    <form className="registration-form flow" onSubmit={handleSubmit}>
+      <h1>Register for the website</h1>
       <div className="user_controls">
-        <label htmlFor="user_name">Username</label>
         <input
+          className="registration-form__input"
           type="text"
-          id="user_name"
           name="userName"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.userName}
+          placeholder="Username"
         />
         {touched.userName ? (
           <span className="error_msg">{errors.userName}</span>
@@ -97,14 +82,14 @@ function RegistrationForm() {
         )}
       </div>
       <div className="user_controls">
-        <label htmlFor="password">Password</label>
         <input
+          className="registration-form__input"
           type="password"
-          id="password"
           name="password"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.password}
+          placeholder="Password"
         />
         {touched.password ? (
           <span className="error_msg">{errors.password}</span>
@@ -113,14 +98,14 @@ function RegistrationForm() {
         )}
       </div>
       <div className="user_controls">
-        <label htmlFor="first_name">First Name</label>
         <input
+          className="registration-form__input"
           type="text"
-          id="first_name"
           name="firstName"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.firstName}
+          placeholder="First Name"
         />
         {touched.firstName ? (
           <span className="error_msg">{errors.firstName}</span>
@@ -129,14 +114,14 @@ function RegistrationForm() {
         )}
       </div>
       <div className="user_controls">
-        <label htmlFor="last_name">Last Name</label>
         <input
+          className="registration-form__input"
           type="text"
-          id="last_name"
           name="lastName"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.lastName}
+          placeholder="Last Name"
         />
         {touched.lastName ? (
           <span className="error_msg">{errors.lastName}</span>
@@ -145,26 +130,26 @@ function RegistrationForm() {
         )}
       </div>
       <div className="user_controls">
-        <label htmlFor="email">Email</label>
         <input
+          className="registration-form__input"
           type="email"
-          id="email"
           name="email"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.email}
+          placeholder="Email"
         />
         {touched.email ? <span className="error_msg">{errors.email}</span> : ""}
       </div>
       <div className="user_controls">
-        <label htmlFor="phone">Phone Number</label>
         <input
+          className="registration-form__input"
           type="tel"
-          id="phone"
           name="phoneNumber"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.phoneNumber}
+          placeholder="Phone Number"
         />
         {touched.phoneNumber ? (
           <span className="error_msg">{errors.phoneNumber}</span>
@@ -174,14 +159,14 @@ function RegistrationForm() {
       </div>
 
       <div className="user_controls">
-        <label htmlFor="company_name">Company Name</label>
         <input
+          className="registration-form__input"
           type="text"
-          id="company_name"
           name="companyName"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.companyName}
+          placeholder="Company Name"
         />
         {touched.companyName ? (
           <span className="error_msg">{errors.companyName}</span>
@@ -190,14 +175,14 @@ function RegistrationForm() {
         )}
       </div>
       <div className="user_controls">
-        <label htmlFor="designation">Designation</label>
         <input
+          className="registration-form__input"
           type="text"
-          id="designation"
           name="designation"
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.designation}
+          placeholder="Designation"
         />
         {touched.designation ? (
           <span className="error_msg">{errors.designation}</span>
@@ -206,7 +191,9 @@ function RegistrationForm() {
         )}
       </div>
       <div className="user_actions">
-        <button type="submit">SignUp</button>
+        <Button className="btn--violet" type="submit">
+          SignUp
+        </Button>
       </div>
     </form>
   );

@@ -1,15 +1,15 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1.25rem;
+.registration-form {
+  background-color: var(--clr-white);
+  padding: 3rem;
+  min-width: 32rem;
 }
 
-.form__input {
+.registration-form__input {
   display: block;
   padding: 0.5rem;
   border: 0;
   border-bottom: 1px solid black;
+  width: 100%;
 }
 
 .form__input:focus {
