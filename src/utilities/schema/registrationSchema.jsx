@@ -22,7 +22,7 @@ const registrationSchema = Yup.object({
   lastName: Yup.string().min(2).max(15).required("LastName is required!"),
   companyName: Yup.string()
     .min(2)
-    .max(15)
+
     .required("Company Name is required!"),
   designation: Yup.string().min(2).max(15).required("designation is required!"),
   phoneNumber: Yup.string()
