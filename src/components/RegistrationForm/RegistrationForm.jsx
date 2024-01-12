@@ -2,18 +2,18 @@ import registrationSchema from "../../utilities/schema/registrationSchema.jsx";
 import "./RegistrationForm.css";
 import { useFormik } from "formik";
 import Button from "../UI/Button/Button.jsx";
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
+  email: "",
   userName: "",
   firstName: "",
   lastName: "",
-  email: "",
+  mobileNumber: "",
   password: "",
   designation: "",
   companyName: "",
-  phoneNumber: "",
 };
 
 function RegistrationForm() {
@@ -30,10 +30,9 @@ function RegistrationForm() {
     validationSchema: registrationSchema,
     onSubmit: () => {
       storeData();
-      console.log("Form submitted");
-      resetForm();
     },
   });
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
 
   async function storeData() {
@@ -41,18 +40,24 @@ function RegistrationForm() {
     formdata.append("response_type", "JSON");
     formdata.append("input_type", "JSON");
     formdata.append("method", "create_contact");
-    formdata.append(
-      "rest_data",
-      `{"user_auth":{"lang_key":"eng","contact_detail": {
-        "username_c":${values.userName},
-        "password":${values.password},
-        "first_name":${values.firstName},
-        "last_name":${values.lastName},
-        "email":${values.email}, 
-        "mobile":${values.phoneNumber},
-        "company_name":${values.companyName},
-        "designation":${values.designation}}}}`
-    );
+
+    const jsonData = {
+      user_auth: {
+        lang_key: "eng",
+        contact_detail: {
+          email: `${values.email}`,
+          username_c: `${values.userName}`,
+          first_name: `${values.firstName}`,
+          last_name: `${values.lastName}`,
+          mobile: `${values.mobileNumber}`,
+          password: `${values.password}`,
+          company_name: `${values.designation}`,
+          designation: `${values.designation}`,
+        },
+      },
+    };
+
+    formdata.append("rest_data", JSON.stringify(jsonData));
 
     const requestOptions = {
       method: "POST",
@@ -60,21 +65,15 @@ function RegistrationForm() {
       redirect: "follow",
     };
 
-    // fetch(
-    //   "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
-    //   requestOptions
-    // )
-    //   .then((response) => response.json())
-    //   .then((result) => console.log(result))
-    //   .catch((error) => console.log("error", error));
     try {
       const response = await fetch(
         "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
-        requestOptions
+        requestOptions,
       );
 
       const data = await response.json();
-      const navigate = useNavigate();
+      console.log(data);
+
       if ("id" in data) {
         navigate("/dashboard");
         resetForm();
@@ -86,14 +85,21 @@ function RegistrationForm() {
     }
   }
 
-  useEffect(() => {
-    storeData();
-  }, []);
-
-  const navigate = useNavigate();
   return (
     <form className="registration-form flow" onSubmit={handleSubmit}>
       <h1>Register for the website</h1>
+      <div className="user_controls">
+        <input
+          className="registration-form__input"
+          type="email"
+          name="email"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.email}
+          placeholder="Email"
+        />
+        {touched.email ? <span className="error_msg">{errors.email}</span> : ""}
+      </div>
       <div className="user_controls">
         <input
           className="registration-form__input"
@@ -106,23 +112,6 @@ function RegistrationForm() {
         />
         {touched.userName ? (
           <span className="error_msg">{errors.userName}</span>
-        ) : (
-          ""
-        )}
-      </div>
-
-      <div className="user_controls">
-        <input
-          className="registration-form__input"
-          type="password"
-          name="password"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.password}
-          placeholder="Password"
-        />
-        {touched.password ? (
-          <span className="error_msg">{errors.password}</span>
         ) : (
           ""
         )}
@@ -159,30 +148,35 @@ function RegistrationForm() {
           ""
         )}
       </div>
-      <div className="user_controls">
-        <input
-          className="registration-form__input"
-          type="email"
-          name="email"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.email}
-          placeholder="Email"
-        />
-        {touched.email ? <span className="error_msg">{errors.email}</span> : ""}
-      </div>
+
       <div className="user_controls">
         <input
           className="registration-form__input"
           type="tel"
-          name="phoneNumber"
+          name="mobileNumber"
           onChange={handleChange}
           onBlur={handleBlur}
-          value={values.phoneNumber}
-          placeholder="Phone Number"
+          value={values.mobileNumber}
+          placeholder="Mobile"
         />
-        {touched.phoneNumber ? (
-          <span className="error_msg">{errors.phoneNumber}</span>
+        {touched.mobileNumber ? (
+          <span className="error_msg">{errors.mobileNumber}</span>
+        ) : (
+          ""
+        )}
+      </div>
+      <div className="user_controls">
+        <input
+          className="registration-form__input"
+          type="password"
+          name="password"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.password}
+          placeholder="Password"
+        />
+        {touched.password ? (
+          <span className="error_msg">{errors.password}</span>
         ) : (
           ""
         )}
@@ -221,7 +215,7 @@ function RegistrationForm() {
       </div>
       <div className="user_actions">
         <Button className="btn--violet" type="submit">
-          <Link to="/dashboard">SignUp</Link>
+          SignUp
         </Button>
       </div>
     </form>

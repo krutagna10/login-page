@@ -2,7 +2,7 @@ import Button from "../UI/Button/Button.jsx";
 import { useFormik } from "formik";
 import loginSchema from "../../utilities/schema/loginSchema.jsx";
 import "./LoginForm.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const initialValues = {
@@ -39,7 +39,7 @@ function LoginForm() {
     formdata.append("method", "login_portal");
     formdata.append(
       "rest_data",
-      `{"user_auth":{"email":"${values.email}","password":${values.password},"encryption":"PLAIN"},"application":"mobile"}`
+      `{"user_auth":{"email":"${values.email}","password":${values.password},"encryption":"PLAIN"},"application":"mobile"}`,
     );
 
     const requestOptions = {
@@ -51,12 +51,11 @@ function LoginForm() {
     try {
       const response = await fetch(
         "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
-        requestOptions
+        requestOptions,
       );
 
       const data = await response.json();
-      // if ("contact_id" in data) {
-      if (data.hasOwnProperty("contact_id")) {
+      if ("contact_id" in data) {
         navigate("/dashboard");
         resetForm();
       } else {
