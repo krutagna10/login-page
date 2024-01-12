@@ -39,7 +39,7 @@ function LoginForm() {
     formdata.append("method", "login_portal");
     formdata.append(
       "rest_data",
-      `{"user_auth":{"email":"${values.email}","password":${values.password},"encryption":"PLAIN"},"application":"mobile"}`,
+      `{"user_auth":{"email":"${values.email}","password":${values.password},"encryption":"PLAIN"},"application":"mobile"}`
     );
 
     const requestOptions = {
@@ -51,11 +51,12 @@ function LoginForm() {
     try {
       const response = await fetch(
         "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
-        requestOptions,
+        requestOptions
       );
 
       const data = await response.json();
-      if ("contact_id" in data) {
+      // if ("contact_id" in data) {
+      if (data.hasOwnProperty("contact_id")) {
         navigate("/dashboard");
         resetForm();
       } else {

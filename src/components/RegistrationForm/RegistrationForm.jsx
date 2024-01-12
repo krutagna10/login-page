@@ -2,7 +2,8 @@ import registrationSchema from "../../utilities/schema/registrationSchema.jsx";
 import "./RegistrationForm.css";
 import { useFormik } from "formik";
 import Button from "../UI/Button/Button.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const initialValues = {
   userName: "",
@@ -28,19 +29,29 @@ function RegistrationForm() {
     initialValues: initialValues,
     validationSchema: registrationSchema,
     onSubmit: () => {
+      storeData();
       console.log("Form submitted");
       resetForm();
     },
   });
+  const [error, setError] = useState(null);
 
-  function storeData() {
+  async function storeData() {
     const formdata = new FormData();
     formdata.append("response_type", "JSON");
     formdata.append("input_type", "JSON");
     formdata.append("method", "create_contact");
     formdata.append(
       "rest_data",
-      '{"user_auth":{"lang_key":"eng","contact_detail": {"email":"kpatel.kp3101@gmail.com", "username_c":"krutagna31","first_name":"Krutagna","last_name":"Patel","mobile":"7016164976","password":"12345678","company_name":"Dreamers Technologies","designation":"Intern"}}}',
+      `{"user_auth":{"lang_key":"eng","contact_detail": {
+        "username_c":${values.userName},
+        "password":${values.password},
+        "first_name":${values.firstName},
+        "last_name":${values.lastName},
+        "email":${values.email}, 
+        "mobile":${values.phoneNumber},
+        "company_name":${values.companyName},
+        "designation":${values.designation}}}}`
     );
 
     const requestOptions = {
@@ -49,19 +60,37 @@ function RegistrationForm() {
       redirect: "follow",
     };
 
-    fetch(
-      "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
-      requestOptions,
-    )
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+    // fetch(
+    //   "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
+    //   requestOptions
+    // )
+    //   .then((response) => response.json())
+    //   .then((result) => console.log(result))
+    //   .catch((error) => console.log("error", error));
+    try {
+      const response = await fetch(
+        "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
+        requestOptions
+      );
+
+      const data = await response.json();
+      const navigate = useNavigate();
+      if ("id" in data) {
+        navigate("/dashboard");
+        resetForm();
+      } else {
+        setError(data["error-msg"]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
     storeData();
   }, []);
 
+  const navigate = useNavigate();
   return (
     <form className="registration-form flow" onSubmit={handleSubmit}>
       <h1>Register for the website</h1>
@@ -81,6 +110,7 @@ function RegistrationForm() {
           ""
         )}
       </div>
+
       <div className="user_controls">
         <input
           className="registration-form__input"
@@ -157,7 +187,6 @@ function RegistrationForm() {
           ""
         )}
       </div>
-
       <div className="user_controls">
         <input
           className="registration-form__input"
@@ -192,7 +221,7 @@ function RegistrationForm() {
       </div>
       <div className="user_actions">
         <Button className="btn--violet" type="submit">
-          SignUp
+          <Link to="/dashboard">SignUp</Link>
         </Button>
       </div>
     </form>
