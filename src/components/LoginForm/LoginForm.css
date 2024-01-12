@@ -1,11 +1,11 @@
-.form {
+.login-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1.25rem;
 }
 
-.form__input {
+.login-form__input {
   display: block;
   padding: 0.5rem;
   border: 0;
@@ -13,20 +13,20 @@
   width: 100%;
 }
 
-.form__input:focus {
+.login-form__input:focus {
   outline: 0;
   border-bottom: 2px solid black;
 }
 
-.form__input.error {
+.login-form__input.error {
   border-bottom: 1px solid red;
 }
 
-.form__input-wrapper {
+.login-form__control {
   position: relative;
 }
 
-.form__input-error-message {
+.login-form__error-message {
   font-size: 14px;
   color: red;
   position: absolute;
@@ -35,7 +35,7 @@
   transform: translateY(-50%);
 }
 
-.form__btn-forgot-password {
+.login-form__forgot-password-btn {
   color: var(--clr-gray);
   background: transparent;
   border: 0;
@@ -46,11 +46,11 @@
   margin-left: auto;
 }
 
-.form__btn-forgot-password:hover {
+.login-form__forgot-password-btn:hover {
   color: var(--clr-dark-violet);
 }
 
-.form__btn {
+.login-form__btn {
   margin-top: 2rem;
 }
 

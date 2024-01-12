@@ -88,7 +88,7 @@ function RegistrationForm() {
   return (
     <form className="registration-form flow" onSubmit={handleSubmit}>
       <h1>Register for the website</h1>
-      <div className="user_controls">
+      <div className="registration-form__control">
         <input
           className="registration-form__input"
           type="email"
@@ -98,9 +98,15 @@ function RegistrationForm() {
           value={values.email}
           placeholder="Email"
         />
-        {touched.email ? <span className="error_msg">{errors.email}</span> : ""}
+        {touched.email ? (
+          <span className="registration-form__error-message">
+            {errors.email}
+          </span>
+        ) : (
+          ""
+        )}
       </div>
-      <div className="user_controls">
+      <div className="registration-form__control">
         <input
           className="registration-form__input"
           type="text"
@@ -111,12 +117,14 @@ function RegistrationForm() {
           placeholder="Username"
         />
         {touched.userName ? (
-          <span className="error_msg">{errors.userName}</span>
+          <span className="registration-form__error-message">
+            {errors.userName}
+          </span>
         ) : (
           ""
         )}
       </div>
-      <div className="user_controls">
+      <div className="registration-form__control">
         <input
           className="registration-form__input"
           type="text"
@@ -127,12 +135,14 @@ function RegistrationForm() {
           placeholder="First Name"
         />
         {touched.firstName ? (
-          <span className="error_msg">{errors.firstName}</span>
+          <span className="registration-form__error-message">
+            {errors.firstName}
+          </span>
         ) : (
           ""
         )}
       </div>
-      <div className="user_controls">
+      <div className="registration-form__control">
         <input
           className="registration-form__input"
           type="text"
@@ -143,13 +153,15 @@ function RegistrationForm() {
           placeholder="Last Name"
         />
         {touched.lastName ? (
-          <span className="error_msg">{errors.lastName}</span>
+          <span className="registration-form__error-message">
+            {errors.lastName}
+          </span>
         ) : (
           ""
         )}
       </div>
 
-      <div className="user_controls">
+      <div className="registration-form__control">
         <input
           className="registration-form__input"
           type="tel"
@@ -160,12 +172,14 @@ function RegistrationForm() {
           placeholder="Mobile"
         />
         {touched.mobileNumber ? (
-          <span className="error_msg">{errors.mobileNumber}</span>
+          <span className="registration-form__error-message">
+            {errors.mobileNumber}
+          </span>
         ) : (
           ""
         )}
       </div>
-      <div className="user_controls">
+      <div className="registration-form__control">
         <input
           className="registration-form__input"
           type="password"
@@ -176,12 +190,14 @@ function RegistrationForm() {
           placeholder="Password"
         />
         {touched.password ? (
-          <span className="error_msg">{errors.password}</span>
+          <span className="registration-form__error-message">
+            {errors.password}
+          </span>
         ) : (
           ""
         )}
       </div>
-      <div className="user_controls">
+      <div className="registration-form__control">
         <input
           className="registration-form__input"
           type="text"
@@ -192,12 +208,14 @@ function RegistrationForm() {
           placeholder="Company Name"
         />
         {touched.companyName ? (
-          <span className="error_msg">{errors.companyName}</span>
+          <span className="registration-form__error-message">
+            {errors.companyName}
+          </span>
         ) : (
           ""
         )}
       </div>
-      <div className="user_controls">
+      <div className="registration-form__control">
         <input
           className="registration-form__input"
           type="text"
@@ -208,16 +226,16 @@ function RegistrationForm() {
           placeholder="Designation"
         />
         {touched.designation ? (
-          <span className="error_msg">{errors.designation}</span>
+          <span className="registration-form__error-message">
+            {errors.designation}
+          </span>
         ) : (
           ""
         )}
       </div>
-      <div className="user_actions">
-        <Button className="btn--violet" type="submit">
-          SignUp
-        </Button>
-      </div>
+      <Button className="registration-form__btn btn--violet" type="submit">
+        SignUp
+      </Button>
     </form>
   );
 }

@@ -67,10 +67,10 @@ function LoginForm() {
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
-      <div className="form__input-wrapper">
+    <form className="login-form" onSubmit={handleSubmit}>
+      <div className="login-form__control">
         <input
-          className={`form__input ${
+          className={`login-form__input ${
             errors.email && touched.email ? "error" : ""
           }`}
           name="email"
@@ -81,12 +81,12 @@ function LoginForm() {
           placeholder="Email"
         />
         {errors.email && touched.email && (
-          <span className="form__input-error-message">{errors.email}</span>
+          <span className="login-form__error-message">{errors.email}</span>
         )}
       </div>
-      <div className="form__input-wrapper">
+      <div className="login-form__control">
         <input
-          className={`form__input ${
+          className={`login-form__input ${
             errors.password && touched.password ? "error" : ""
           }`}
           name="password"
@@ -97,14 +97,14 @@ function LoginForm() {
           placeholder="Password"
         />
         {errors.password && touched.password && (
-          <span className="form__input-error-message">{errors.password}</span>
+          <span className="login-form__error-message">{errors.password}</span>
         )}
       </div>
-      <button className="form__btn-forgot-password" type="button">
+      <button className="login-form__forgot-password-btn" type="button">
         Forgot Password?
       </button>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <Button className="form__btn btn--violet" type="submit">
+      <Button className="login-form__btn btn--violet" type="submit">
         Login
       </Button>
       <Link to="/registration">Register for the website</Link>

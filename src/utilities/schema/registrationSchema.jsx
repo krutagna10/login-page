@@ -3,29 +3,21 @@ import * as Yup from "yup";
 const registrationSchema = Yup.object({
   email: Yup.string()
     .email("Invalid email address")
-    .required("email is required filed")
-    .test({
-      name: "email validation",
-      message: "entered email address is invalid ",
-      test: (email) => {
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        return emailRegex.test(email);
-      },
-    }),
-  firstName: Yup.string().min(2).max(15).required("FirstName is required!"),
-  lastName: Yup.string().min(2).max(15).required("LastName is required!"),
+    .required("Please enter an email"),
+  firstName: Yup.string().min(2).max(15).required("First Name required!"),
+  lastName: Yup.string().min(2).max(15).required("Last Name required!"),
   mobileNumber: Yup.string()
     .min(10)
     .max(10)
-    .required("Mobile number is required!!"),
+    .required("Mobile number required!!"),
   password: Yup.string()
-    .min(3, "Must be at least 8 characters")
-    .required("Please enter a password"),
+    .min(3, "Must be at least 3 characters")
+    .required("Password Required"),
   userName: Yup.string()
     .min(5, "Must be at least 5 characters")
-    .required("Please enter a username"),
-  companyName: Yup.string().min(2).required("Company Name is required!"),
-  designation: Yup.string().min(2).max(15).required("designation is required!"),
+    .required("Username required"),
+  companyName: Yup.string().min(2).required("Company Name required!"),
+  designation: Yup.string().min(2).max(15).required("Designation required"),
 });
 
 export default registrationSchema;

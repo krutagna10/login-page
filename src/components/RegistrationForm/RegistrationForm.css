@@ -12,11 +12,19 @@
   width: 100%;
 }
 
-.form__input:focus {
+.registration-form__input:focus {
   outline: 0;
   border-bottom: 2px solid black;
 }
 
-.form__btn {
-  margin-top: 2rem;
+.registration-form__control {
+  position: relative;
+}
+
+.registration-form__error-message {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: red;
 }
