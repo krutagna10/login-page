@@ -233,6 +233,7 @@ function RegistrationForm() {
           ""
         )}
       </div>
+      {error && <span style={{ color: "red" }}>{error}</span>}
       <Button className="registration-form__btn btn--violet" type="submit">
         SignUp
       </Button>

@@ -24,7 +24,6 @@ function LoginForm() {
     validationSchema: loginSchema,
     onSubmit: () => {
       fetchData();
-      console.log(error);
     },
   });
 
@@ -62,7 +61,7 @@ function LoginForm() {
         setError(data["error-msg"]);
       }
     } catch (error) {
-      console.log(error);
+      console.log("Error has occured");
     }
   };
 
@@ -103,7 +102,7 @@ function LoginForm() {
       <button className="login-form__forgot-password-btn" type="button">
         Forgot Password?
       </button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <span style={{ color: "red" }}>{error}</span>}
       <Button className="login-form__btn btn--violet" type="submit">
         Login
       </Button>
