@@ -68,7 +68,7 @@ function RegistrationForm() {
     try {
       const response = await fetch(
         "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
-        requestOptions,
+        requestOptions
       );
 
       const data = await response.json();

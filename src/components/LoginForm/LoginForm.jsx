@@ -28,7 +28,6 @@ function LoginForm() {
   });
 
   const [error, setError] = useState(null);
-
   const navigate = useNavigate();
 
   const fetchData = async () => {
@@ -38,7 +37,7 @@ function LoginForm() {
     formdata.append("method", "login_portal");
     formdata.append(
       "rest_data",
-      `{"user_auth":{"email":"${values.email}","password":${values.password},"encryption":"PLAIN"},"application":"mobile"}`,
+      `{"user_auth":{"email":"${values.email}","password":${values.password},"encryption":"PLAIN"},"application":"mobile"}`
     );
 
     const requestOptions = {
@@ -50,10 +49,11 @@ function LoginForm() {
     try {
       const response = await fetch(
         "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
-        requestOptions,
+        requestOptions
       );
 
       const data = await response.json();
+      console.log(data);
       if ("contact_id" in data) {
         navigate("/dashboard");
         resetForm();
@@ -100,7 +100,7 @@ function LoginForm() {
         )}
       </div>
       <button className="login-form__forgot-password-btn" type="button">
-        Forgot Password?
+        <Link to="/resetPassword"> Forgot Password?</Link>
       </button>
       {error && <span style={{ color: "red" }}>{error}</span>}
       <Button className="login-form__btn btn--violet" type="submit">
