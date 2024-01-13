@@ -31,31 +31,6 @@ function LoginForm() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    var formdata = new FormData();
-    formdata.append("input_type", "JSON");
-    formdata.append("response_type", "JSON");
-    formdata.append("method", "login_portal");
-    formdata.append(
-      "rest_data",
-      '{"user_auth":{"email":"kpatel.kp5000@gmail.com","password":"krutagna5000","encryption":"PLAIN"},"application":"mobile"}',
-    );
-
-    var requestOptions = {
-      method: "POST",
-      body: formdata,
-      redirect: "follow",
-    };
-
-    fetch(
-      "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
-      requestOptions,
-    )
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
-  }, []);
-
   const fetchData = async () => {
     const formData = new FormData();
     formData.append("input_type", "JSON");
