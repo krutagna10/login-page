@@ -2,6 +2,7 @@ import Button from "../UI/Button/Button.jsx";
 import { useFormik } from "formik";
 import loginSchema from "../../utilities/schema/loginSchema.jsx";
 import "./LoginForm.css";
+import ResetPassword from "../PasswordReset/ResetPassword.jsx";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -100,7 +101,7 @@ function LoginForm() {
         )}
       </div>
       <button className="login-form__forgot-password-btn" type="button">
-        <Link to="/resetPassword"> Forgot Password?</Link>
+        <Link to="/ResetPassword"> Forgot Password?</Link>
       </button>
       {error && <span style={{ color: "red" }}>{error}</span>}
       <Button className="login-form__btn btn--violet" type="submit">
