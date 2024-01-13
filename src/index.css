@@ -1,14 +1,18 @@
 :root {
   /* Font */
-  --font-barlow-condensed: "Barlow Condensed", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
 
   /* Font Sizes */
-  /* 32 -> 48 | 28 -> 40 | 24 -> 14 | 20 -> 24 | 15 -> 16  */
-  --fs-500: clamp(2rem, calc(1.65rem + 1.74vw), 3rem);
-  --fs-400: clamp(1.75rem, calc(1.49rem + 1.3vw), 2.5rem);
-  --fs-300: 1.5rem;
-  --fs-200: clamp(1.25rem, calc(1.16rem + 0.43vw), 1.5rem);
-  --fs-100: clamp(0.94rem, calc(0.92rem + 0.11vw), 1rem);
+  /* 13 -> 14 | 15 -> 16 | 16 -> 18| 20 -> 24 | 24 -> 32 */
+  --fs-100: clamp(0.8125rem, 0.7908rem + 0.1087vw, 0.875rem);
+  --fs-200: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
+  --fs-300: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
+  --fs-400: clamp(1.25rem, 1.163rem + 0.4348vw, 1.5rem);
+  --fs-500: clamp(1.5rem, 1.3261rem + 0.8696vw, 2rem);
+
+  /* Font Weights */
+  --font-medium: 500;
+  --font-bold: 700;
 
   /* Spacing */
   /* 16 -> 18 | 20 -> 24 | 24 -> 32 | 32 -> 48 | 48 -> 80 */
@@ -57,8 +61,12 @@ html {
 }
 
 body {
-  font-family: var(--font-barlow-condensed);
-  background: linear-gradient(to right, var(--clr-dark-violet), var(--clr-dark-blue));
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(
+    to right,
+    var(--clr-dark-violet),
+    var(--clr-dark-blue)
+  );
   position: relative;
   min-height: 100vh;
   line-height: 1.5;
@@ -66,7 +74,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 /* Hiding animations */
@@ -99,6 +106,77 @@ body {
 }
 
 /* Utility Classes */
-.flow>*+* {
+.flow > * + * {
   margin-top: 1rem;
+}
+
+/* Flexbox Utility Classes */
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+/* Grid Utility */
+.grid {
+  display: grid;
+}
+
+.place-content-center {
+  place-content: center;
+}
+
+.place-items-center {
+  place-items: center;
+}
+
+@media (min-width: 48em) {
+  .grid-cols-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Gap Utility Class */
+.gap {
+  gap: var(--spacing-200);
+}
+
+/* Font Sizes */
+.fs-100 {
+  font-size: var(--fs-100);
+}
+
+.fs-200 {
+  font-size: var(--fs-200);
+}
+
+.fs-300 {
+  font-size: var(--fs-300);
+}
+
+.fs-400 {
+  font-size: var(--fs-400);
+}
+
+.fs-500 {
+  font-size: var(--fs-500);
+}
+
+/* Text Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
 }

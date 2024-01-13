@@ -1,39 +1,8 @@
-.container{
-  display: grid;
-  grid-template-columns: 55fr 45fr;
-  border-radius: 1rem;
-  overflow: hidden;
-  max-width: 56rem;
-}
-
-.image-wrapper {
-  background-color: var(--clr-violet);
-}
-
-.form-wrapper {
+.login {
   background-color: var(--clr-white);
-  padding: 1.5rem;
+  padding-block: var(--spacing-300);
+  padding-inline: var(--spacing-200);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  margin: 2rem;
 }
-
-.auth-toggle__radio {
-  display: none;
-}
-
-.auth-toggle {
-  display: flex;
-  border: 1px solid var(--clr-gray);
-  margin-bottom: 3rem;
-}
-
-.auth-toggle__label {
-  width: 100%;
-  text-align: center;
-  cursor: pointer;
-  padding: 0.75rem;
-}
-
-.auth-toggle__radio:checked + .auth-toggle__label {
-  background-color: var(--clr-dark-violet);
-  color: var(--clr-white)
-}
-

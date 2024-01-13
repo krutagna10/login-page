@@ -1,6 +1,6 @@
 import Button from "../UI/Button/Button.jsx";
 import { useFormik } from "formik";
-import loginSchema from "../../utilities/schema/loginSchema.jsx";
+import loginSchema from "../../utilities/loginSchema.jsx";
 import "./LoginForm.css";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -73,6 +73,12 @@ function LoginForm() {
   return (
     <form className="login-form" onSubmit={handleSubmit}>
       <div className="login-form__control">
+        <div className="flex justify-between">
+          <label className="login-form__label">Email address</label>
+          {errors.email && touched.email && (
+            <span className="login-form__error-message">{errors.email}</span>
+          )}
+        </div>
         <input
           className={`login-form__input ${
             errors.email && touched.email ? "error" : ""
@@ -84,11 +90,14 @@ function LoginForm() {
           type="text"
           placeholder="Email"
         />
-        {errors.email && touched.email && (
-          <span className="login-form__error-message">{errors.email}</span>
-        )}
       </div>
       <div className="login-form__control">
+        <div className="flex justify-between">
+          <label className="login-form__label">Password</label>
+          {errors.password && touched.password && (
+            <span className="login-form__error-message">{errors.password}</span>
+          )}
+        </div>
         <input
           className={`login-form__input ${
             errors.password && touched.password ? "error" : ""
@@ -100,9 +109,6 @@ function LoginForm() {
           type="password"
           placeholder="Password"
         />
-        {errors.password && touched.password && (
-          <span className="login-form__error-message">{errors.password}</span>
-        )}
       </div>
       <button className="login-form__forgot-password-btn" type="button">
         Forgot Password?

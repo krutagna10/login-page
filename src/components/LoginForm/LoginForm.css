@@ -3,13 +3,17 @@
   flex-direction: column;
   justify-content: center;
   gap: 1.25rem;
+  background-color: var(--clr-white);
+  min-width: 26rem;
+}
+
+.login-form__label {
+  font-weight: 700;
 }
 
 .login-form__input {
   display: block;
   padding: 0.5rem;
-  border: 0;
-  border-bottom: 1px solid black;
   width: 100%;
 }
 
@@ -19,7 +23,7 @@
 }
 
 .login-form__input.error {
-  border-bottom: 1px solid red;
+  border: 2px solid red;
 }
 
 .login-form__control {
@@ -27,12 +31,9 @@
 }
 
 .login-form__error-message {
-  font-size: 14px;
+  font-size: var(--fs-100);
+  font-weight: 700;
   color: red;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
 }
 
 .login-form__forgot-password-btn {
@@ -53,4 +54,3 @@
 .login-form__btn {
   margin-top: 2rem;
 }
-

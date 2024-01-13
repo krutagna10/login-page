@@ -1,4 +1,4 @@
-import registrationSchema from "../../utilities/schema/registrationSchema.jsx";
+import registrationSchema from "../../utilities/registrationSchema.jsx";
 import "./RegistrationForm.css";
 import { useFormik } from "formik";
 import Button from "../UI/Button/Button.jsx";
