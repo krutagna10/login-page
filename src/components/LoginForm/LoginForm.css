@@ -1,14 +1,8 @@
 .login-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1.25rem;
-  background-color: var(--clr-white);
-  min-width: 26rem;
-}
+  --flow-space: 1.5rem !important;
 
-.login-form__label {
-  font-weight: 700;
+  background-color: var(--clr-white);
+  min-width: 24rem;
 }
 
 .login-form__input {
@@ -17,34 +11,27 @@
   width: 100%;
 }
 
-.login-form__input:focus {
-  outline: 0;
-  border-bottom: 2px solid black;
-}
-
 .login-form__input.error {
   border: 2px solid red;
 }
 
-.login-form__control {
-  position: relative;
-}
-
 .login-form__error-message {
-  font-size: var(--fs-100);
-  font-weight: 700;
-  color: red;
+  color: var(--clr-red);
 }
 
 .login-form__forgot-password-btn {
-  color: var(--clr-gray);
   background: transparent;
+  color: var(--clr-violet);
   border: 0;
+  border-bottom: 1px solid var(--clr-violet);
+  margin-left: auto;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 14px;
-  width: max-content;
-  margin-left: auto;
+}
+
+.login-form__server-error-message {
+  color: var(--clr-red);
+  font-size: var(--fs-200);
 }
 
 .login-form__forgot-password-btn:hover {
@@ -52,5 +39,15 @@
 }
 
 .login-form__btn {
-  margin-top: 2rem;
+  width: 100%;
+}
+
+.login-form__registration-btn {
+  text-decoration: none;
+  color: var(--clr-violet);
+  font-weight: var(--font-medium);
+}
+
+.login-form__registration-btn:hover {
+  color: var(--clr-dark-violet);
 }

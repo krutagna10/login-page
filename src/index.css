@@ -3,12 +3,17 @@
   --font-roboto: "Roboto", sans-serif;
 
   /* Font Sizes */
-  /* 13 -> 14 | 15 -> 16 | 16 -> 18| 20 -> 24 | 24 -> 32 */
-  --fs-100: clamp(0.8125rem, 0.7908rem + 0.1087vw, 0.875rem);
-  --fs-200: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
-  --fs-300: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
-  --fs-400: clamp(1.25rem, 1.163rem + 0.4348vw, 1.5rem);
-  --fs-500: clamp(1.5rem, 1.3261rem + 0.8696vw, 2rem);
+  /* 12 -> 13 | 13 -> 14 | 15 -> 16 | 16 -> 18| 20 -> 24 | 24 -> 32 */
+  --fs-100: clamp(0.75rem, 0.7283rem + 0.1087vw, 0.8125rem);
+  --fs-200: clamp(0.8125rem, 0.7908rem + 0.1087vw, 0.875rem);
+  --fs-300: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
+  --fs-400: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
+  --fs-500: clamp(1.25rem, 1.163rem + 0.4348vw, 1.5rem);
+  --fs-600: clamp(1.5rem, 1.3261rem + 0.8696vw, 2rem);
+
+  /* Spacing */
+  --flow-space: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
+  --gap: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
 
   /* Font Weights */
   --font-medium: 500;
@@ -23,11 +28,13 @@
   --spacing-500: clamp(3rem, calc(2.3rem + 3.48vw), 5rem);
 
   /* Colors */
-  --clr-violet: hsl(267, 89%, 65%);
-  --clr-dark-violet: hsl(266, 77%, 54%);
+  --clr-violet: hsl(252, 78%, 64%);
+  --clr-dark-violet: hsl(252, 59%, 48%);
   --clr-dark-blue: hsl(250, 60%, 36%);
   --clr-white: hsl(0, 0%, 100%);
-  --clr-gray: #868e96;
+  --clr-gray: hsl(210, 7%, 56%);
+  --clr-very-light-gray: hsl(225, 20%, 96%);
+  --clr-red: hsl(0, 100%, 50%);
 }
 
 *,
@@ -64,16 +71,16 @@ body {
   font-family: "Poppins", sans-serif;
   background: linear-gradient(
     to right,
-    var(--clr-dark-violet),
-    var(--clr-dark-blue)
+    var(--clr-violet),
+    var(--clr-dark-violet)
   );
+  font-size: var(--fs-300);
   position: relative;
   min-height: 100vh;
   line-height: 1.5;
   overflow-x: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-content: center;
 }
 
 /* Hiding animations */
@@ -107,7 +114,7 @@ body {
 
 /* Utility Classes */
 .flow > * + * {
-  margin-top: 1rem;
+  margin-top: var(--flow-space);
 }
 
 /* Flexbox Utility Classes */
@@ -172,6 +179,10 @@ body {
   font-size: var(--fs-500);
 }
 
+.fs-600 {
+  font-size: var(--fs-600);
+}
+
 /* Text Utility Classes */
 .text-center {
   text-align: center;
@@ -179,4 +190,12 @@ body {
 
 .text-uppercase {
   text-transform: uppercase;
+}
+
+.font-bold {
+  font-weight: var(--font-bold);
+}
+
+.font-medium {
+  font-weight: var(--font-medium);
 }

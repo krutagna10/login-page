@@ -8,7 +8,7 @@ function Home() {
   return (
     <Layout>
       <Container className="login flow">
-        <h2 className="text-center">Welcome back</h2>
+        <h2 className="fs-500 text-center">Welcome back</h2>
         <p className="text-center">Please enter your details to sign in</p>
         <LoginForm />
       </Container>
