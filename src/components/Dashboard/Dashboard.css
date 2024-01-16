@@ -1,0 +1,44 @@
+nav {
+    background-color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 1rem 1.5rem;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-menu,
+.navbar-title {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar-logo-left img {
+    width: 2rem;
+}
+
+.navbar-list ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.list-item-link {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
