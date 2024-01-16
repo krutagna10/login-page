@@ -1,4 +1,4 @@
-import registrationSchema from "../../utilities/schema/registrationSchema.jsx";
+import registrationSchema from "../../utilities/registrationSchema.jsx";
 import "./RegistrationForm.css";
 import { useFormik } from "formik";
 import Button from "../UI/Button/Button.jsx";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   email: "",
-  userName: "",
+  username: "",
   firstName: "",
   lastName: "",
   mobileNumber: "",
@@ -46,7 +46,7 @@ function RegistrationForm() {
         lang_key: "eng",
         contact_detail: {
           email: `${values.email}`,
-          username_c: `${values.userName}`,
+          username_c: `${values.username}`,
           first_name: `${values.firstName}`,
           last_name: `${values.lastName}`,
           mobile: `${values.mobileNumber}`,
@@ -75,7 +75,7 @@ function RegistrationForm() {
       console.log(data);
 
       if ("id" in data) {
-        navigate("/dashboard");
+        navigate("/");
         resetForm();
       } else {
         setError(data["error-msg"]);
@@ -87,155 +87,172 @@ function RegistrationForm() {
 
   return (
     <form className="registration-form flow" onSubmit={handleSubmit}>
-      <h1>Register for the website</h1>
-      <div className="registration-form__control">
-        <input
-          className="registration-form__input"
-          type="email"
-          name="email"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.email}
-          placeholder="Email"
-        />
-        {touched.email ? (
-          <span className="registration-form__error-message">
-            {errors.email}
-          </span>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="registration-form__control">
-        <input
-          className="registration-form__input"
-          type="text"
-          name="userName"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.userName}
-          placeholder="Username"
-        />
-        {touched.userName ? (
-          <span className="registration-form__error-message">
-            {errors.userName}
-          </span>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="registration-form__control">
-        <input
-          className="registration-form__input"
-          type="text"
-          name="firstName"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.firstName}
-          placeholder="First Name"
-        />
-        {touched.firstName ? (
-          <span className="registration-form__error-message">
-            {errors.firstName}
-          </span>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="registration-form__control">
-        <input
-          className="registration-form__input"
-          type="text"
-          name="lastName"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.lastName}
-          placeholder="Last Name"
-        />
-        {touched.lastName ? (
-          <span className="registration-form__error-message">
-            {errors.lastName}
-          </span>
-        ) : (
-          ""
-        )}
-      </div>
+      <div className="grid grid-cols-2 gap">
+        <div className="flow">
+          <div className="registration-form__control">
+            <div className="flex justify-between">
+              <label className="registration-form__label">Email address</label>
+              {errors.email && touched.email && (
+                <span className="registration-form__error-message">
+                  {errors.email}
+                </span>
+              )}
+            </div>
+            <input
+              className="registration-form__input"
+              type="email"
+              name="email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+              placeholder="Email"
+            />
+          </div>
+          <div className="registration-form__control">
+            <div className="flex justify-between">
+              <label className="registration-form__label">Username</label>
+              {errors.username && touched.username && (
+                <span className="registration-form__error-message">
+                  {errors.username}
+                </span>
+              )}
+            </div>
+            <input
+              className="registration-form__input"
+              type="text"
+              name="username"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.username}
+              placeholder="Username"
+            />
+          </div>
+          <div className="registration-form__control">
+            <div className="flex justify-between">
+              <label className="registration-form__label">Password</label>
+              {errors.password && touched.password && (
+                <span className="registration-form__error-message">
+                  {errors.password}
+                </span>
+              )}
+            </div>
+            <input
+              className="registration-form__input"
+              type="password"
+              name="password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+              placeholder="Password"
+            />
+          </div>
+          <div className="registration-form__control">
+            <div className="flex justify-between">
+              <label className="registration-form__label">First Name</label>
+              {errors.firstName && touched.firstName && (
+                <span className="registration-form__error-message">
+                  {errors.firstName}
+                </span>
+              )}
+            </div>
+            <input
+              className="registration-form__input"
+              type="text"
+              name="firstName"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.firstName}
+              placeholder="First Name"
+            />
+          </div>
+        </div>
+        <div className="flow">
+          <div className="registration-form__control">
+            <div className="flex justify-between">
+              <label className="registration-form__label">Last Name</label>
+              {errors.lastName && touched.lastName && (
+                <span className="registration-form__error-message">
+                  {errors.lastName}
+                </span>
+              )}
+            </div>
+            <input
+              className="registration-form__input"
+              type="text"
+              name="lastName"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.lastName}
+              placeholder="Last Name"
+            />
+          </div>
+          <div className="registration-form__control">
+            <div className="flex justify-between">
+              <label className="registration-form__label">Mobile Number</label>
+              {errors.mobileNumber && touched.mobileNumber && (
+                <span className="registration-form__error-message">
+                  {errors.mobileNumber}
+                </span>
+              )}
+            </div>
+            <input
+              className="registration-form__input"
+              type="tel"
+              name="mobileNumber"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.mobileNumber}
+              placeholder="Mobile"
+            />
+          </div>
 
-      <div className="registration-form__control">
-        <input
-          className="registration-form__input"
-          type="tel"
-          name="mobileNumber"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.mobileNumber}
-          placeholder="Mobile"
-        />
-        {touched.mobileNumber ? (
-          <span className="registration-form__error-message">
-            {errors.mobileNumber}
-          </span>
-        ) : (
-          ""
-        )}
+          <div className="registration-form__control">
+            <div className="flex justify-between">
+              <label className="registration-form__label">Company Name</label>
+              {errors.companyName && touched.companyName && (
+                <span className="registration-form__error-message">
+                  {errors.companyName}
+                </span>
+              )}
+            </div>
+            <input
+              className="registration-form__input"
+              type="text"
+              name="companyName"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.companyName}
+              placeholder="Company Name"
+            />
+          </div>
+          <div className="registration-form__control">
+            <div className="flex justify-between">
+              <label className="registration-form__label">Designation</label>
+              {errors.designation && touched.designation && (
+                <span className="registration-form__error-message">
+                  {errors.designation}
+                </span>
+              )}
+            </div>
+            <input
+              className="registration-form__input"
+              type="text"
+              name="designation"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.designation}
+              placeholder="Designation"
+            />
+          </div>
+        </div>
       </div>
-      <div className="registration-form__control">
-        <input
-          className="registration-form__input"
-          type="password"
-          name="password"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.password}
-          placeholder="Password"
-        />
-        {touched.password ? (
-          <span className="registration-form__error-message">
-            {errors.password}
-          </span>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="registration-form__control">
-        <input
-          className="registration-form__input"
-          type="text"
-          name="companyName"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.companyName}
-          placeholder="Company Name"
-        />
-        {touched.companyName ? (
-          <span className="registration-form__error-message">
-            {errors.companyName}
-          </span>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="registration-form__control">
-        <input
-          className="registration-form__input"
-          type="text"
-          name="designation"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.designation}
-          placeholder="Designation"
-        />
-        {touched.designation ? (
-          <span className="registration-form__error-message">
-            {errors.designation}
-          </span>
-        ) : (
-          ""
-        )}
-      </div>
-      {error && <span style={{ color: "red" }}>{error}</span>}
+      {error && (
+        <p className="registration-form__server-error-message fs-200 text-center">
+          {error}
+        </p>
+      )}
       <Button className="registration-form__btn btn--violet" type="submit">
-        SignUp
+        Sign Up
       </Button>
     </form>
   );

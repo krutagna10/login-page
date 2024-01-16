@@ -1,8 +1,8 @@
 import Button from "../UI/Button/Button.jsx";
 import { useFormik } from "formik";
-import loginSchema from "../../utilities/schema/loginSchema.jsx";
+import loginSchema from "../../utilities/loginSchema.jsx";
 import "./LoginForm.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const initialValues = {
@@ -41,10 +41,6 @@ function LoginForm() {
       `{"user_auth":{"email":"${values.email}","password":"${values.password}","encryption":"PLAIN"},"application":"mobile"}`,
     );
 
-    console.log(formData);
-
-    console.log(values);
-
     const requestOptions = {
       method: "POST",
       body: formData,
@@ -58,7 +54,7 @@ function LoginForm() {
       );
 
       const data = await response.json();
-      console.log(data);
+
       if ("contact_id" in data) {
         navigate("/dashboard");
         resetForm();
@@ -71,8 +67,16 @@ function LoginForm() {
   };
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
+    <form className="login-form flow" onSubmit={handleSubmit}>
       <div className="login-form__control">
+        <div className="flex justify-between">
+          <label className="fs-200 font-medium">Email address</label>
+          {errors.email && touched.email && (
+            <span className="login-form__error-message fs-100 font-medium">
+              {errors.email}
+            </span>
+          )}
+        </div>
         <input
           className={`login-form__input ${
             errors.email && touched.email ? "error" : ""
@@ -84,11 +88,16 @@ function LoginForm() {
           type="text"
           placeholder="Email"
         />
-        {errors.email && touched.email && (
-          <span className="login-form__error-message">{errors.email}</span>
-        )}
       </div>
       <div className="login-form__control">
+        <div className="flex justify-between">
+          <label className="fs-200 font-medium">Password</label>
+          {errors.password && touched.password && (
+            <span className="login-form__error-message fs-100 font-medium">
+              {errors.password}
+            </span>
+          )}
+        </div>
         <input
           className={`login-form__input ${
             errors.password && touched.password ? "error" : ""
@@ -100,18 +109,29 @@ function LoginForm() {
           type="password"
           placeholder="Password"
         />
-        {errors.password && touched.password && (
-          <span className="login-form__error-message">{errors.password}</span>
-        )}
       </div>
-      <button className="login-form__forgot-password-btn" type="button">
-        Forgot Password?
-      </button>
-      {error && <span style={{ color: "red" }}>{error}</span>}
+      <div className="flex">
+        <button
+          className="login-form__forgot-password-btn fs-200"
+          type="button"
+        >
+          Forgot Password?
+        </button>
+      </div>
+      {error && (
+        <p className="login-form__server-error-message fs-200 text-center">
+          {error}
+        </p>
+      )}
       <Button className="login-form__btn btn--violet" type="submit">
         Login
       </Button>
-      <Link to="/registration">Register for the website</Link>
+      <p className="text-center">
+        Do not have an account ?{" "}
+        <Link className="login-form__registration-btn" to="/registration">
+          Create account
+        </Link>
+      </p>
     </form>
   );
 }
