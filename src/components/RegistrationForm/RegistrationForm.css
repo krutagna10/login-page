@@ -1,6 +1,5 @@
 .registration-form {
   background-color: var(--clr-white);
-  min-width: 32rem;
 }
 
 .registration-form__input {

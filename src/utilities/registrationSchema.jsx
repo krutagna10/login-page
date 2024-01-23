@@ -9,7 +9,7 @@ const registrationSchema = Yup.object({
   mobileNumber: Yup.string()
     .min(10)
     .max(10)
-    .required("Mobile Number cannot be empty"),
+    .required("Mobile No. cannot be empty"),
   password: Yup.string()
     .min(3, "Must be at least 3 characters")
     .required("Password cannot be empty"),
