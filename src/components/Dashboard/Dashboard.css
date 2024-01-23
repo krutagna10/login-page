@@ -1,44 +1,68 @@
-nav {
-    background-color: white;
+.hidden {
+    display: none;
+}
+
+.primary-header {
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
-    padding: 1rem 1.5rem;
-}
-
-.navbar-container {
+    background-color: white;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
+    padding: 1rem 2rem;
+    transition: all 3s ease-in;
 }
 
-.logo-menu,
-.navbar-title {
-    font-size: 2rem;
+.nav__menu-list ul {
+    background-color: white;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 3rem;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    padding: min(20vh, 15rem) 1rem;
+    font-size: 1.24rem;
+    gap: 1.5rem;
+    transform: translateX(0%);
+    transition: all 0.3s ease-in;
+    overflow-y: scroll;
 }
 
-.navbar-logo-left {
+.nav__menu-list ul:hover {
+    width: 8rem;
+}
+
+.nav__menu-list ul::-webkit-scrollbar {
+    display: none;
+}
+
+.nav__menu-link {
     display: flex;
     align-items: center;
     gap: 1rem;
+    font-size: 1rem;
 }
 
-.navbar-logo-left img {
+.primary-header__logo-image {
+    max-width: 100%;
+    display: block;
     width: 2rem;
 }
 
-.navbar-list ul {
+.primary-header__logo {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 1.5rem;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 2rem;
 }
 
-.list-item-link {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
+.primary-header__button {
+    background-color: transparent;
+    border: none;
 }

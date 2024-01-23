@@ -78,18 +78,24 @@ a {
 
 body {
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(
-    to right,
-    var(--clr-violet),
-    var(--clr-dark-violet)
-  );
+  background: linear-gradient(to right,
+      var(--clr-violet),
+      var(--clr-dark-violet));
   font-size: var(--fs-300);
   position: relative;
   min-height: 100vh;
   line-height: 1.5;
   overflow-x: hidden;
+  /* <<<<<<< HEAD */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -99;
+
+  /* =======
   display: grid;
   place-content: center;
+>>>>>>> 8edbc368fb94d00285626c065932e822c0aa9ce7 */
 }
 
 /* Hiding animations */
@@ -122,7 +128,7 @@ body {
 }
 
 /* Utility Classes */
-.flow > * + * {
+.flow>*+* {
   margin-top: var(--flow-space);
 }
 

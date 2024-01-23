@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 import { useEffect } from "react";
 import "./Dashboard.css";
+import Account from "./Account";
 
 export default function DashboardLayout() {
   const [dashBoard_modules, setDashBoardModules] = useState([]);
+  const [show, setShow] = useState(false);
   useEffect(() => {
     var formdata = new FormData();
     formdata.append("input_type", "JSON");
@@ -33,33 +35,40 @@ export default function DashboardLayout() {
       .catch((error) => console.log("error", error));
   }, []);
   return (
-    <div>
+    // <div className="home">
+
+    <header class="primary-header flex">
+      <div class="primary-header__logo">
+        <button
+          onClick={() => setShow(!show)}
+          className="primary-header__button"
+        >
+          <ion-icon name="menu-outline" class="menu_icon"></ion-icon>
+        </button>
+        <img
+          src={logo}
+          alt="logo of website"
+          className="primary-header__logo-image"
+        />
+      </div>
+
       <nav>
-        <div className="navbar-container">
-          <div className="navbar-logo-left">
-            <a className="logo-menu">
-              <ion-icon name="menu" className="logo-menu"></ion-icon>
-            </a>
-            <img src={logo} alt="logo image" />
-          </div>
-          <div className="navbar-list">
-            <ul>
-              {dashBoard_modules.map((item) => (
-                <li className="navbar-list-item">
-                  <a href="/" className="list-item-link">
+        <div className={`${show ? "hidden nav__menu-list" : "nav__menu-list"}`}>
+          <ul className="nav__menu-list--links">
+            {dashBoard_modules.map((item) => (
+              <li className="nav__menu-list--link">
+                <a href="/" className="nav__menu-link">
+                  <span className="menu_list-icon">
                     <ion-icon name="person"></ion-icon>
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="navbar-right">
-            <ion-icon name="search"></ion-icon>
-            <ion-icon name="notifications-outline"></ion-icon>
-          </div>
+                  </span>
+                  <span className="menu_list-text">{item}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </nav>
-    </div>
+    </header>
+    // </div>
   );
 }
