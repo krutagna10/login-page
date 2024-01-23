@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 import { useEffect } from "react";
 import "./Dashboard.css";
-import Account from "./Contacts";
+// import Account from "./Contacts";
 
 export default function DashboardLayout() {
   const [dashBoard_modules, setDashBoardModules] = useState([]);
@@ -14,7 +14,7 @@ export default function DashboardLayout() {
     formdata.append("method", "get_dashboard_modules");
     formdata.append(
       "rest_data",
-      '{"user_auth":{"session_id":"", "token": ""}}',
+      '{"user_auth":{"session_id":"", "token": ""}}'
     );
 
     var requestOptions = {
@@ -25,7 +25,7 @@ export default function DashboardLayout() {
 
     fetch(
       "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
-      requestOptions,
+      requestOptions
     )
       .then((response) => response.json())
       .then((result) => {
@@ -37,8 +37,8 @@ export default function DashboardLayout() {
   return (
     // <div className="home">
 
-    <header class="primary-header flex">
-      <div class="primary-header__logo">
+    <header className="primary-header flex">
+      <div className="primary-header__logo">
         <button
           onClick={() => setShow(!show)}
           className="primary-header__button"
@@ -56,7 +56,7 @@ export default function DashboardLayout() {
         <div className={`${show ? "hidden nav__menu-list" : "nav__menu-list"}`}>
           <ul className="nav__menu-list--links">
             {dashBoard_modules.map((item) => (
-              <li className="nav__menu-list--link">
+              <li className="nav__menu-list--link" key={item}>
                 <a href="/" className="nav__menu-link">
                   <span className="menu_list-icon">
                     <ion-icon name="person"></ion-icon>
