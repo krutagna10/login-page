@@ -20,14 +20,14 @@ function Dashboard() {
     try {
       const response = await fetch(
         "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
-        requestOptions,
+        requestOptions
       );
 
       const data = await response.json();
       console.log(data);
       const [contactsData, accountsData, casesData, notesData] =
         data.modules_layout;
-
+      console.log(data.modules_layout);
       localStorage.setItem("account", JSON.stringify(accountsData));
       localStorage.setItem("contacts", JSON.stringify(contactsData));
       localStorage.setItem("cases", JSON.stringify(casesData));
@@ -46,7 +46,6 @@ function Dashboard() {
   if (isLoading) {
     return <h2>Loading...</h2>;
   }
-
   return (
     <Layout>
       <DashboardLayout />

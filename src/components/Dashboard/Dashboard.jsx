@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 import { useEffect } from "react";
 import "./Dashboard.css";
-// import Account from "./Contacts";
+import { Link } from "react-router-dom";
 
-export default function DashboardLayout() {
+export default function DashboardLayout(props) {
   const [dashBoard_modules, setDashBoardModules] = useState([]);
   const [show, setShow] = useState(false);
   useEffect(() => {
@@ -34,9 +34,8 @@ export default function DashboardLayout() {
       })
       .catch((error) => console.log("error", error));
   }, []);
+  console.log(props.onData);
   return (
-    // <div className="home">
-
     <header className="primary-header flex">
       <div className="primary-header__logo">
         <button
@@ -57,18 +56,27 @@ export default function DashboardLayout() {
           <ul className="nav__menu-list--links">
             {dashBoard_modules.map((item) => (
               <li className="nav__menu-list--link" key={item}>
-                <a href="/" className="nav__menu-link">
+                {/* <a href="/" className="nav__menu-link">
                   <span className="menu_list-icon">
                     <ion-icon name="person"></ion-icon>
                   </span>
                   <span className="menu_list-text">{item}</span>
-                </a>
+                </a> */}
+                <Link
+                  to={`/dashboard/${item.toLowerCase()}`}
+                  className="nav__menu-link"
+                >
+                  {" "}
+                  <span className="menu_list-icon">
+                    <ion-icon name="person"></ion-icon>
+                  </span>
+                  <span className="menu_list-text">{item}</span>
+                </Link>
               </li>
             ))}
           </ul>
         </div>
       </nav>
     </header>
-    // </div>
   );
 }
