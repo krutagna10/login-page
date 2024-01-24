@@ -3,6 +3,7 @@ import logo from "../../assets/logo.png";
 import { useEffect } from "react";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 export default function DashboardLayout(props) {
   const [dashBoard_modules, setDashBoardModules] = useState([]);
@@ -36,47 +37,46 @@ export default function DashboardLayout(props) {
   }, []);
   console.log(props.onData);
   return (
-    <header className="primary-header flex">
-      <div className="primary-header__logo">
-        <button
-          onClick={() => setShow(!show)}
-          className="primary-header__button"
-        >
-          <ion-icon name="menu-outline" class="menu_icon"></ion-icon>
-        </button>
-        <img
-          src={logo}
-          alt="logo of website"
-          className="primary-header__logo-image"
-        />
-      </div>
-
-      <nav>
-        <div className={`${show ? "hidden nav__menu-list" : "nav__menu-list"}`}>
-          <ul className="nav__menu-list--links">
-            {dashBoard_modules.map((item) => (
-              <li className="nav__menu-list--link" key={item}>
-                {/* <a href="/" className="nav__menu-link">
-                  <span className="menu_list-icon">
-                    <ion-icon name="person"></ion-icon>
-                  </span>
-                  <span className="menu_list-text">{item}</span>
-                </a> */}
-                <Link
-                  to={`/dashboard/${item.toLowerCase()}`}
-                  className="nav__menu-link"
-                >
-                  {" "}
-                  <span className="menu_list-icon">
-                    <ion-icon name="person"></ion-icon>
-                  </span>
-                  <span className="menu_list-text">{item}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+    <React.Fragment>
+      <header className="primary-header flex">
+        <div className="primary-header__logo">
+          <button
+            onClick={() => setShow(!show)}
+            className="primary-header__button"
+          >
+            <ion-icon name="menu-outline" class="menu_icon"></ion-icon>
+          </button>
+          <img
+            src={logo}
+            alt="logo of website"
+            className="primary-header__logo-image"
+          />
         </div>
-      </nav>
-    </header>
+
+        <nav>
+          <div
+            className={`${show ? "hidden nav__menu-list" : "nav__menu-list"}`}
+          >
+            <ul className="nav__menu-list--links">
+              {dashBoard_modules.map((item) => (
+                <li className="nav__menu-list--link" key={item}>
+                  <Link
+                    to={`/dashboard/${item.toLowerCase()}`}
+                    className="nav__menu-link"
+                  >
+                    {" "}
+                    <span className="menu_list-icon">
+                      <ion-icon name="person"></ion-icon>
+                    </span>
+                    <span className="menu_list-text">{item}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <Outlet />
+    </React.Fragment>
   );
 }

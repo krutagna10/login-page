@@ -15,10 +15,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="/dashboard/accounts" element={Account} />
-          <Route path="/dashboard/contacts" element={Contacts} />
-          <Route path="/dashboard/leads" element={Leads} />
-          <Route path="/dashboard/cases" element={Cases} />
+          <Route path="accounts" element={<Account />} />
+          <Route path="contacts" element={<Contacts />} />
+          <Route path="leads" element={<Leads />} />
+          <Route path="cases" element={<Cases />} />
         </Route>
       </Routes>
     </BrowserRouter>
