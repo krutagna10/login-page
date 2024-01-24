@@ -1,6 +1,8 @@
 import React from "react";
 
 export default function EditView() {
+  const data = JSON.parse(localStorage.getItem("contacts"));
+  console.log(data);
   return (
     <React.Fragment>
       <h2>Edit View</h2>

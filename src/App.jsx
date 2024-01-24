@@ -7,6 +7,7 @@ import Account from "./pages/Accounts/Account.jsx";
 import Contacts from "./pages/Contacts/Contacts.jsx";
 import Leads from "./pages/Leads/Leads.jsx";
 import Cases from "./pages/Cases/Cases.jsx";
+import EditView from "./pages/Contacts/EditView.jsx";
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
         <Route path="/registration" element={<Registration />} />
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="accounts" element={<Account />} />
-          <Route path="contacts" element={<Contacts />} />
+          <Route path="contacts" element={<Contacts />}>
+            <Route path="editview" element={<EditView />}></Route>
+          </Route>
           <Route path="leads" element={<Leads />} />
           <Route path="cases" element={<Cases />} />
         </Route>
