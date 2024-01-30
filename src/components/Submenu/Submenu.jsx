@@ -1,10 +1,16 @@
+import { Link } from "react-router-dom";
+import React from "react";
+import "./Submenu.css";
+
 function Submenu() {
   return (
-    <nav>
+    <nav className="submenu">
       <ul>
-        <li>List View</li>
-        <li>Edit View</li>
-        <li>Detail View</li>
+        <li className="submenu__list">
+          <Link to="/dashboard/contacts/listview">List View</Link>
+          <Link to="/dashboard/contacts/edtiview">Edit View</Link>
+          <Link to="/dashboard/contacts/detailview">Detail View</Link>
+        </li>
       </ul>
     </nav>
   );
