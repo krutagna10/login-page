@@ -3,6 +3,9 @@ import { Outlet, useNavigate } from "react-router-dom";
 import "./Contacts.css";
 
 function Contacts() {
+  const data = JSON.parse(localStorage.getItem("contacts"));
+  console.log(data);
+
   const navigate = useNavigate();
 
   useEffect(() => {

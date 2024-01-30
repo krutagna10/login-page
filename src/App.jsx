@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home.jsx";
 import Registration from "./pages/Registration/Registration.jsx";
-// import DashboardLayout from "./components/Header/Header.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import Account from "./pages/Accounts/Account.jsx";
 import Contacts from "./pages/Contacts/Contacts.jsx";
