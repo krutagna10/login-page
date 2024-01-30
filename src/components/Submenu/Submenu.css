@@ -1,0 +1,15 @@
+.submenu {
+  position: absolute;
+  background-color: red;
+  right: -10rem;
+  z-index: 999;
+  border: 10px solid green;
+}
+
+.submenu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3rem;
+}
+

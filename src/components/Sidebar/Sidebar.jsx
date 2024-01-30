@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./Sidebar.css";
+import Submenu from "../Submenu/Submenu.jsx";
 
 function Sidebar() {
   const [dashboardModules, setDashboardModules] = useState([]);
@@ -38,16 +39,17 @@ function Sidebar() {
       <nav className="sidebar__nav">
         <ul className="sidebar__nav-list">
           {dashboardModules.map((item) => (
-            <li key={item}>
+            <li key={item} className="sidebar__nav-item">
               <Link
                 to={`/dashboard/${item.toLowerCase()}`}
-                className="sidebar__nav-link"
+                className="sidebar__nav-link flex items-center"
               >
                 {" "}
                 <span>
-                  <ion-icon name="person"></ion-icon>
+                  <ion-icon name="person" />
                 </span>
                 <span className="sidebar__link-text">{item}</span>
+                <Submenu />
               </Link>
             </li>
           ))}

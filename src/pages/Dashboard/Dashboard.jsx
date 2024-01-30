@@ -52,10 +52,7 @@ function Dashboard() {
       <Header />
       <div className="flex">
         <Sidebar />
-        <div
-          style={{ flexGrow: "1", border: "1px solid red" }}
-          className="grid place-content-center"
-        >
+        <div style={{ flexGrow: "1" }} className="grid place-content-center">
           <Outlet />
         </div>
       </div>

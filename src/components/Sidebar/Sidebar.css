@@ -17,6 +17,11 @@
   overflow-x: hidden;
 }
 
+.sidebar__nav-link {
+  position: relative;;
+  border: 3px solid green;
+}
+
 .sidebar__nav-list:hover {
   width: 8rem;
 }
@@ -30,4 +35,13 @@
   align-items: center;
   gap: 1rem;
   font-size: 1rem;
+}
+
+.submenu {
+  display: none;
+}
+
+
+.sidebar__nav-link:hover .submenu {
+  display: block;
 }
