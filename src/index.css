@@ -86,16 +86,10 @@ body {
   min-height: 100vh;
   line-height: 1.5;
   overflow-x: hidden;
-  /* <<<<<<< HEAD */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: -99;
-
-  /* =======
-  display: grid;
-  place-content: center;
->>>>>>> 8edbc368fb94d00285626c065932e822c0aa9ce7 */
+  z-index: -9;
 }
 
 /* Hiding animations */
