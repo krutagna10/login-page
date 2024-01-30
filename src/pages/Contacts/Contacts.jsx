@@ -23,7 +23,10 @@ function Contacts() {
           <tbody>
             <tr>
               <td>
-                <Link to="/dashboard/contacts/editview">Mayur1</Link>
+                <Link to="editview">Mayur1</Link>
+                <Link to="detailview">
+                  <ion-icon name="create-outline"></ion-icon>
+                </Link>
               </td>
               <td>11121121212121</td>
               <td>mayur account name</td>

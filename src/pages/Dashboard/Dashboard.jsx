@@ -25,13 +25,13 @@ function Dashboard() {
 
       const data = await response.json();
       console.log(data);
-      const [contactsData, accountsData, casesData, notesData] =
+      const [contactsData, accountsData, casesData, LeadsData] =
         data.modules_layout;
       console.log(data.modules_layout);
       localStorage.setItem("account", JSON.stringify(accountsData));
       localStorage.setItem("contacts", JSON.stringify(contactsData));
       localStorage.setItem("cases", JSON.stringify(casesData));
-      localStorage.setItem("notes", JSON.stringify(notesData));
+      localStorage.setItem("leads", JSON.stringify(LeadsData));
     } catch (error) {
       console.log(error);
     } finally {

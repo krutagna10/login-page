@@ -35,7 +35,6 @@ export default function DashboardLayout(props) {
       })
       .catch((error) => console.log("error", error));
   }, []);
-  console.log(props.onData);
   return (
     <React.Fragment>
       <header className="primary-header flex">
