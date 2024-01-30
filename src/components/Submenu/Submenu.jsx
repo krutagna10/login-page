@@ -8,7 +8,7 @@ function Submenu() {
       <ul>
         <li className="submenu__list">
           <Link to="/dashboard/contacts/listview">List View</Link>
-          <Link to="/dashboard/contacts/edtiview">Edit View</Link>
+          <Link to="/dashboard/contacts/editview">Edit View</Link>
           <Link to="/dashboard/contacts/detailview">Detail View</Link>
         </li>
       </ul>

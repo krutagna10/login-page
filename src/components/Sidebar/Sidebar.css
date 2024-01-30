@@ -5,7 +5,7 @@
 }
 
 .sidebar__nav-list {
-  width: 3rem;
+  width: 10rem;
   display: flex;
   flex-direction: column;
   padding: min(20vh, 15rem) 1rem;
@@ -13,13 +13,9 @@
   gap: 1.5rem;
   transform: translateX(0%);
   transition: all 0.3s ease-in;
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 
-.sidebar__nav-link {
-  position: relative;;
-  border: 3px solid green;
+.sidebar__nav-item {
 }
 
 .sidebar__nav-list:hover {
@@ -35,6 +31,7 @@
   align-items: center;
   gap: 1rem;
   font-size: 1rem;
+  position: relative;;
 }
 
 .submenu {
