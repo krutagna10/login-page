@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Layout from "../../layout/Layout.jsx";
-import DashboardLayout from "../../components/Dashboard/Dashboard.jsx";
+import Header from "../../components/Header/Header.jsx";
+import { Outlet } from "react-router-dom";
+import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 
 function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,18 +22,17 @@ function Dashboard() {
     try {
       const response = await fetch(
         "http://103.54.222.110/dreamcrm.dreamertechs.com/custom/service/dream_portal_new/DreamPortalapp_rest.php",
-        requestOptions
+        requestOptions,
       );
 
       const data = await response.json();
-      console.log(data);
-      const [contactsData, accountsData, casesData, LeadsData] =
+      const [contactsData, accountsData, casesData, notesData] =
         data.modules_layout;
       console.log(data.modules_layout);
       localStorage.setItem("account", JSON.stringify(accountsData));
       localStorage.setItem("contacts", JSON.stringify(contactsData));
       localStorage.setItem("cases", JSON.stringify(casesData));
-      localStorage.setItem("leads", JSON.stringify(LeadsData));
+      localStorage.setItem("notes", JSON.stringify(notesData));
     } catch (error) {
       console.log(error);
     } finally {
@@ -48,7 +49,16 @@ function Dashboard() {
   }
   return (
     <Layout>
-      <DashboardLayout />
+      <Header />
+      <div className="flex">
+        <Sidebar />
+        <div
+          style={{ flexGrow: "1", border: "1px solid red" }}
+          className="grid place-content-center"
+        >
+          <Outlet />
+        </div>
+      </div>
     </Layout>
   );
 }

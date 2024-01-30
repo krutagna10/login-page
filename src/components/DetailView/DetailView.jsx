@@ -1,8 +1,9 @@
 import React from "react";
 
 export default function DetailView() {
-  const data = JSON.parse(localStorage.getItem("leads"));
+  const data = JSON.parse(localStorage.getItem("contacts"));
   console.log(data);
+
   return (
     <React.Fragment>
       <h2>Detail View</h2>
