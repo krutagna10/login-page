@@ -5,11 +5,21 @@ import "./Submenu.css";
 function Submenu() {
   return (
     <nav className="submenu">
-      <ul>
-        <li className="submenu__list">
-          <Link to="/dashboard/contacts/listview">List View</Link>
-          <Link to="/dashboard/contacts/editview">Edit View</Link>
-          <Link to="/dashboard/contacts/detailview">Detail View</Link>
+      <ul className="submenu__list">
+        <li className="submenu__item">
+          <Link className="submenu__link" to="/dashboard/contacts/listview">
+            List View
+          </Link>
+        </li>
+        <li>
+          <Link className="submenu__link" to="/dashboard/contacts/editview">
+            Edit View
+          </Link>
+        </li>
+        <li>
+          <Link className="submenu__link" to="/dashboard/contacts/detailview">
+            Detail View
+          </Link>
         </li>
       </ul>
     </nav>

@@ -1,7 +1,7 @@
-function Layout({ children }) {
+function Layout({ children, className }) {
   return (
     <>
-      <main>{children}</main>
+      <main className={className || ""}>{children}</main>
     </>
   );
 }

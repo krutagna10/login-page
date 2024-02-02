@@ -1,0 +1,16 @@
+.edit-form {
+  --flow-space: 1.5rem !important;
+
+  background-color: var(--clr-white);
+  min-width: 24rem;
+}
+
+.edit-form__input {
+  display: block;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.edit-form__btn {
+  width: 100%;
+}

@@ -11,7 +11,7 @@ function Contacts() {
 
   return (
     <React.Fragment>
-      <div className="text-center">
+      <div className="contact text-center">
         <h1>Contacts Page</h1>
         <Outlet />
       </div>

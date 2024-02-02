@@ -5,7 +5,7 @@ import "./Registration.css";
 
 function Registration() {
   return (
-    <Layout>
+    <Layout className="content-center">
       <Container className="registration flow">
         <h2 className="text-center fs-500">Sign up for the website</h2>
         <RegistrationForm />

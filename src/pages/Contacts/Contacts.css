@@ -2,7 +2,8 @@ table,
 th,
 tr,
 td {
-    border: 1px solid black;
+    border: 1px solid white;
+    color: white;
     border-collapse: collapse;
     padding: 0.5rem;
 }
