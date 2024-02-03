@@ -6,7 +6,7 @@ import Container from "../../components/UI/Container/Container.jsx";
 
 function Home() {
   return (
-    <Layout>
+    <Layout className="content-center">
       <Container className="login flow">
         <h2 className="fs-500 text-center">Welcome back</h2>
         <p className="text-center">Please enter your details to sign in</p>

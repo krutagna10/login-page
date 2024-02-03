@@ -89,6 +89,10 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  min-height: 100vh;
+}
+
 /* Hiding animations */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
@@ -126,6 +130,10 @@ body {
 /* Flexbox Utility Classes */
 .flex {
   display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .justify-center {
@@ -204,4 +212,9 @@ body {
 
 .font-medium {
   font-weight: var(--font-medium);
+}
+
+.content-center {
+  display: grid;
+  place-content: center;
 }

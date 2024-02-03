@@ -15,9 +15,6 @@
   transition: all 0.3s ease-in;
 }
 
-.sidebar__nav-item {
-}
-
 .sidebar__nav-list:hover {
   width: 8rem;
 }
@@ -35,10 +32,18 @@
 }
 
 .submenu {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: all 0.5s ease;
 }
 
+.sidebar__nav-item {
+  position: relative;
+}
 
-.sidebar__nav-link:hover .submenu {
-  display: block;
+.sidebar__nav-item:hover .submenu {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
 }

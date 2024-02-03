@@ -28,7 +28,6 @@ function Sidebar() {
     )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         setDashboardModules(result);
       })
       .catch((error) => console.log("error", error));
@@ -49,8 +48,8 @@ function Sidebar() {
                   <ion-icon name="person" />
                 </span>
                 <span className="sidebar__link-text">{item}</span>
-                <Submenu />
               </Link>
+              <Submenu />
             </li>
           ))}
         </ul>
